@@ -1,0 +1,45 @@
+<h1>HyperMask Demo</h1>
+
+<p>
+  If you have a Web3 enabled browser (e.g. MetaMask), all these account queries will happen on your wallet. If you don't have a MetaMask extension (you can try it out in incognito mode), these API calls will be handled by HyperMask. 
+</p>
+
+<p>
+  Learn more at <a href="https://hypermask.io/">hypermask.io</a>.
+</p>
+
+My Accounts: <pre id="accounts">Loading...</pre>
+
+<button onclick="sendMoney()">Send Money</button>
+
+
+<script src="https://cdn.rawgit.com/ethereum/web3.js/1.0/dist/web3.min.js"></script>
+<script src="https://unpkg.com/hypermask@1/dist/index.js"></script>
+<script>
+if (typeof web3 !== 'undefined') {
+    window.web3 = new Web3(web3.currentProvider);
+} else {
+    window.web3 = new Web3(HyperMask.wrapProvider(new Web3.providers.HttpProvider("https://ropsten.infura.io/")));
+}
+
+console.log(web3)
+
+
+web3.eth.getAccounts(function(err, accounts){
+  document.getElementById('accounts').innerText = JSON.stringify(accounts)
+})
+
+function sendMoney(){
+  web3.eth.getAccounts(function(err, accounts){
+  web3.eth.sendTransaction({
+        from: accounts[0],
+        to: '0x8B4867203bb8e2e742E8C4Bed883faE5099C3665',
+        value: web3.utils.toWei('0.5', 'ether'),
+    })
+    .on('transactionHash', e => console.log('tx hash', e))
+    .on('receipt', e => console.log('receipt', e))
+    .on('confirmation', e => console.log('confirmation', e))
+    .on('error', e => console.error('error', e))
+  })
+}
+</script>
