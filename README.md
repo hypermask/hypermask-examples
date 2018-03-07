@@ -13,7 +13,6 @@ HyperMask lets users without MetaMask installed still participate in the decentr
 
 HyperMask is really easy to integrate into your Ethereum DApp. We've got a few examples in this repository of how exactly to do it. Maybe if we have enough time we'll expand it out to a few nifty sample apps that you can use as inspiration for your next great idea. 
 
-
 ## License
 
 All the files in this repo are MIT Licensed, so feel free to copy and change it however you see fit.
