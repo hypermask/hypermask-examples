@@ -1,45 +1,35 @@
-<h1>HyperMask Demo</h1>
+<html>
+   <head>
+      <title>HyperMask Demo</title>
+      <style>body{font-family:Avenir,sans-serif;margin:50px 8vw}p{margin:8px 0px;}small{font-variant:all-small-caps;}</style>
+   </head>
+   <style>*{margin:0px;}</style>
+   <body>
+      <h1 style="margin:0px">HyperMask Demo</h1>
+      <p>This is a simple demo app for HyperMask. View source on GitHub <a href="https://github.com/hypermask/hypermask-examples">here</a>.</p>
+      <p>HyperMask creates a new wallet for you under the hood. To get your address, view your balance, or download your private key, go to <a href="https://app.hypermask.io" target="_blank">app.hypermask.io</a>.</p>
+      <br/>
+      <div>Current Gas Price: <span id="gasPrice">Loading...</span></div>
+      <div>Network: <span id="network">Loading...</span></div>
+      
+      <br/>
+      <small>Basic functionality</small>
+      <br/>
+<!--       <button id="setPixel">Set Pixel</button> -->
+      <button id="listAccounts">Get Account Details</button> 
+      <button id="sendEth">Send ETH</button> 
+      <button id="personalSign">Sign Message</button> 
+      <button id="signTyped">Sign Typed Data</button>
+      <div id="accounts" style="font-family: monospace;"></div>
+      <br/>
+      <small>ERC20 demos</small>
+      <br/>
+      <button id="buyToken">Buy ERC20 Token</button> 
+      <button id="sendToken">Send ERC20 Token</button> 
+      
+      <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.33/dist/web3.min.js"></script>
+      <script src="https://unpkg.com/hypermask@1/dist/index.js"></script>
+      <script type="text/javascript" src="./index.js" ></script>
 
-<p>
-  If you have a Web3 enabled browser (e.g. MetaMask), all these account queries will happen on your wallet. If you don't have a MetaMask extension (you can try it out in incognito mode), these API calls will be handled by HyperMask. 
-</p>
-
-<p>
-  Learn more at <a href="https://hypermask.io/">hypermask.io</a>.
-</p>
-
-My Accounts: <pre id="accounts">Loading...</pre>
-
-<button onclick="sendMoney()">Send Money</button>
-
-
-<script src="https://cdn.rawgit.com/ethereum/web3.js/1.0/dist/web3.min.js"></script>
-<script src="https://unpkg.com/hypermask@1/dist/index.js"></script>
-<script>
-if (typeof web3 !== 'undefined') {
-    window.web3 = new Web3(web3.currentProvider);
-} else {
-    window.web3 = new Web3(HyperMask.wrapProvider(new Web3.providers.HttpProvider("https://ropsten.infura.io/")));
-}
-
-console.log(web3)
-
-
-web3.eth.getAccounts(function(err, accounts){
-  document.getElementById('accounts').innerText = JSON.stringify(accounts)
-})
-
-function sendMoney(){
-  web3.eth.getAccounts(function(err, accounts){
-  web3.eth.sendTransaction({
-        from: accounts[0],
-        to: '0x8B4867203bb8e2e742E8C4Bed883faE5099C3665',
-        value: web3.utils.toWei('0.5', 'ether'),
-    })
-    .on('transactionHash', e => console.log('tx hash', e))
-    .on('receipt', e => console.log('receipt', e))
-    .on('confirmation', e => console.log('confirmation', e))
-    .on('error', e => console.error('error', e))
-  })
-}
-</script>
+   </body>
+</html>
