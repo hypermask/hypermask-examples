@@ -8,7 +8,7 @@ To use this sample projects as a starting point for developing a React-based Dap
 
 This demo uses the Parceljs bundler, which is a zero-configuration alternative to Webpack. To install it, run `npm install -g parcel-bundler` (NPM) or `yarn global add parcel-bundler` (Yarn).
 
-Then, run `yarn install` to install dependencies and `yarn start` to start serving from `localhost:5000`.
+Then, run `yarn install` to install dependencies and `yarn start` to start serving from `localhost:6000`.
 
 There is a `TESTING` flag in the code that switches between the Ropsten Test Net and Ethereum Main Net. Set `TESTING` to false if you want to do transactions on the main net (or if you're deploying to production, of course).
 
